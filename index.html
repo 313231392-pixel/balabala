@@ -1,0 +1,232 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#080808">
+  <meta name="description" content="BALABALA 选衣空间 · kids clothing and apparel: jackets, hoodies, jeans. 翻一翻衣杆，把喜欢的丢进购物篮，打一张选衣小票，再打开摄像头实时试穿。">
+  <title>BALABALA · Weird, but nice.</title>
+  <link rel="stylesheet" href="styles.css">
+  <script type="module" src="app.js"></script>
+</head>
+<body data-view="rail">
+
+  <!-- ① 衣杆首页 -->
+  <section id="view-rail" class="view view-rail" aria-label="衣杆首页">
+    <div class="studio-light" aria-hidden="true"></div>
+    <header class="topbar">
+      <a href="#rail" class="brand" aria-label="BALABALA 首页">BALABALA</a>
+      <nav class="topnav" aria-label="主导航">
+        <a href="#shop">COLLECTION</a>
+        <a href="#about">ABOUT</a>
+      </nav>
+      <div class="top-actions">
+        <button type="button" class="sound-toggle text-button" aria-pressed="false">SOUND OFF</button>
+        <button type="button" class="round-button fullscreen-toggle" aria-label="切换全屏"><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M2 6V2h4M10 2h4v4M14 10v4h-4M6 14H2v-4" fill="none" stroke="currentColor" stroke-width="1.4"/></svg></button>
+      </div>
+    </header>
+
+    <div class="rail-hero layer-copy">
+      <h1>Weird,<br>but nice.</h1>
+      <div class="rail-hero-side">
+        <p class="mono">COLLECTION 01 / NINE PIECES</p>
+        <a href="#shop" class="enter-link">进入选衣空间 <span aria-hidden="true">↗</span></a>
+      </div>
+    </div>
+
+    <div id="rail-stage" class="rail-stage">
+      <div class="rail-bar layer-bar" aria-hidden="true"></div>
+      <div id="rail-track" class="rail-track layer-clothes" data-face="side"></div>
+    </div>
+
+    <div class="rail-bottom layer-copy">
+      <p class="mono rail-hint">DRAG TO EXPLORE · HOVER TO TURN <span class="hint-arrow" aria-hidden="true"></span></p>
+      <div class="face-toggle" role="group" aria-label="衣服朝向">
+        <button type="button" data-face="front" aria-pressed="false">FRONT</button>
+        <button type="button" data-face="side" aria-pressed="true">SIDE</button>
+      </div>
+      <p class="mono rail-index"><span id="rail-current">01</span><span class="index-line" aria-hidden="true"></span><span id="rail-total">09</span></p>
+    </div>
+    <p class="rail-tagline mono">WEIRD BUT NICE / 2025 · EVERYDAY UNIFORM.</p>
+  </section>
+
+  <!-- ② ABOUT 环形画廊 -->
+  <section id="view-about" class="view view-about" aria-label="关于" hidden>
+    <div class="studio-light" aria-hidden="true"></div>
+    <header class="topbar topbar-centered">
+      <span></span>
+      <a href="#rail" class="brand" aria-label="BALABALA 首页">BALABALA</a>
+      <div class="top-actions">
+        <button type="button" class="round-button fullscreen-toggle" aria-label="切换全屏"><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M2 6V2h4M10 2h4v4M14 10v4h-4M6 14H2v-4" fill="none" stroke="currentColor" stroke-width="1.4"/></svg></button>
+        <a href="#shop" class="text-button mono">COLLECTION ↗</a>
+      </div>
+    </header>
+    <div id="ring-scene" class="ring-scene" aria-label="系列画廊，可左右拖动">
+      <div id="ring" class="ring"></div>
+    </div>
+    <div class="about-copy">
+      <h2>怪，但是好看。</h2>
+      <p>拼贴、撞色、迷彩和牛仔。<br>九件单品，换个角度再看一遍。</p>
+    </div>
+  </section>
+
+  <!-- ③ 选衣空间 -->
+  <section id="view-shop" class="view view-shop" aria-label="选衣空间" hidden>
+    <header class="topbar">
+      <a href="#rail" class="brand" aria-label="BALABALA 首页">BALABALA</a>
+      <nav class="topnav" aria-label="主导航">
+        <a href="#rail">衣杆首页</a><span class="nav-slash" aria-hidden="true">/</span>
+        <a href="#shop" aria-current="page">选衣空间</a>
+        <a href="#about">ABOUT</a>
+      </nav>
+      <div class="top-actions">
+        <span class="anywear-chip" title="已检测到 Anywear 插件：点衣服左上角的 Try-On 试穿">Anywear 已连接</span>
+        <button type="button" id="cart-chip" class="cart-chip" aria-label="购物车，跳到购物篮"><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M3 5h10l-1 9H4L3 5Zm2.5 0a2.5 2.5 0 0 1 5 0" fill="none" stroke="currentColor" stroke-width="1.3"/></svg>购物车 <span id="cart-count">00</span></button>
+        <button type="button" class="sound-toggle text-button" aria-pressed="false">SOUND OFF</button>
+        <button type="button" class="round-button fullscreen-toggle" aria-label="切换全屏"><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M2 6V2h4M10 2h4v4M14 10v4h-4M6 14H2v-4" fill="none" stroke="currentColor" stroke-width="1.4"/></svg></button>
+      </div>
+    </header>
+
+    <div class="shop-head">
+      <div>
+        <h1>随心翻，找到你的那一件。</h1>
+        <p id="catalog-count" class="mono" aria-live="polite">09 件单品 · 自由挑选</p>
+      </div>
+      <nav id="category-nav" class="pills" aria-label="服装分类"></nav>
+    </div>
+
+    <!-- 给 Anywear 插件读的当前衣服类别（它按面包屑里的英文词判断上装/下装/包） -->
+    <div id="garment-crumb" class="sr-only" aria-label="breadcrumb"></div>
+    <div class="shop-floor">
+      <div class="catalog">
+        <div id="catalog-grid" class="catalog-grid"></div>
+        <div id="catalog-empty" class="catalog-empty" hidden>
+          <p>这个分类下暂时没有衣服。</p>
+          <button type="button" id="reset-filter" class="ghost-button">看全部</button>
+        </div>
+      </div>
+
+      <aside class="basket-panel" id="basket-panel" aria-labelledby="basket-title">
+        <h2 id="basket-title" class="sr-only">购物篮</h2>
+        <div id="basket-zone" class="basket-zone">
+          <p id="basket-empty" class="basket-empty mono">松手，放入购物篮</p>
+          <img class="basket-image" src="assets/basket.png" alt="银色金属网格购物篮" draggable="false">
+          <div id="basket-cards" class="basket-cards"></div>
+        </div>
+        <div class="basket-status">
+          <span id="basket-summary" class="mono" role="status">已选 0 件 · 自动保存</span>
+          <button type="button" id="clear-basket" class="ghost-button small">清空</button>
+        </div>
+        <button type="button" id="receipt-open" class="primary-button"><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M4 6V2h8v4M4 11H2V6h12v5h-2M4 9h8v5H4z" fill="none" stroke="currentColor" stroke-width="1.3"/></svg>打印小票 <span aria-hidden="true">↗</span></button>
+      </aside>
+    </div>
+    <p class="shop-foot mono">点击 + 或拖动卡片放入购物篮 · 点击衣服查看详情 · 点 Try-On 打开试穿</p>
+  </section>
+
+  <!-- ④ 小票打印 -->
+  <section id="view-receipt" class="view view-receipt" aria-label="选衣小票" hidden>
+    <div class="receipt-bgword" aria-hidden="true">BALABALA<br>YOUR EDIT.</div>
+    <header class="topbar">
+      <a href="#rail" class="brand" aria-label="BALABALA 首页">BALABALA</a>
+      <span></span>
+      <a href="#shop" class="text-button back-link">← 返回选衣</a>
+    </header>
+    <div class="receipt-copy">
+      <p class="mono">THE FINAL TOUCH / 03</p>
+      <h1>把喜欢的，<br>留在纸上。</h1>
+      <p class="mono">YOUR PERSONAL EDIT</p>
+    </div>
+    <div class="printer-wrap">
+      <div class="printer" aria-hidden="true">
+        <div class="printer-face"><span class="printer-brand">BALABALA</span><span class="printer-led"></span></div>
+        <div class="printer-slot"></div>
+      </div>
+      <div class="paper-window">
+        <article id="receipt-paper" class="receipt-paper" aria-label="选衣小票内容">
+          <div class="receipt-brand">BALABALA</div>
+          <p class="receipt-subtitle">YOUR FITTING RECORD / 选衣记录</p>
+          <div class="receipt-dateline"><span id="receipt-date"></span><span id="receipt-id"></span></div>
+          <div class="receipt-columns"><span>ITEM / 单品</span><span>QTY</span></div>
+          <div id="receipt-items"></div>
+          <div class="receipt-sum"><span>TOTAL ITEMS / 共</span><strong id="receipt-total">00</strong><span>件</span></div>
+          <p class="receipt-message">GOOD CHOICES.<br>TAKE THEM WITH YOU.</p>
+          <p class="receipt-disclaimer">选衣记录 · 非付款凭证</p>
+          <div class="barcode" aria-hidden="true"></div>
+          <p class="receipt-foot">WEIRD BUT NICE</p>
+        </article>
+      </div>
+    </div>
+    <div class="receipt-bar">
+      <p id="print-status" class="mono" role="status"><span class="dot"></span>正在打印，这里慢慢成形…</p>
+      <div class="receipt-actions">
+        <button type="button" id="reprint" class="ghost-button">再打印一张</button>
+        <button type="button" id="print-pdf" class="ghost-button">打印 / PDF</button>
+        <button type="button" id="save-receipt" class="primary-button compact">保存小票 ↓</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- 服装详情 -->
+  <dialog id="product-dialog" class="product-dialog" aria-labelledby="detail-name">
+    <button type="button" class="dialog-close" data-close aria-label="关闭详情">×</button>
+    <div class="detail-layout">
+      <div class="detail-stage">
+        <div class="detail-turner"><div id="detail-image" class="detail-image" role="img"></div></div>
+        <div class="detail-controls">
+          <span class="mono" id="detail-code"></span>
+          <button type="button" id="detail-turn" class="ghost-button small">转一转</button>
+        </div>
+      </div>
+      <div class="detail-copy">
+        <p class="mono">A CLOSER LOOK · BALABALA</p>
+        <h2 id="detail-name"></h2>
+        <p id="detail-meta" class="detail-meta"></p>
+        <p id="detail-description" class="detail-description"></p>
+        <label for="detail-size" class="mono field-label">尺码（示意）</label>
+        <div id="detail-size" class="size-row" role="radiogroup" aria-label="尺码"></div>
+        <button type="button" id="detail-add" class="primary-button">放进购物篮</button>
+        <button type="button" id="detail-tryon" class="ghost-button wide">✦ Try-On · 实时试穿</button>
+      </div>
+    </div>
+  </dialog>
+
+  <!-- Anywear 实时试穿 -->
+  <button type="button" id="fitting-pill" class="fitting-pill" hidden><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M2 5h3l1-2h4l1 2h3v8H2z" fill="none" stroke="currentColor" stroke-width="1.3"/><circle cx="8" cy="9" r="2.2" fill="none" stroke="currentColor" stroke-width="1.3"/></svg>AI fitting room</button>
+  <section id="tryon-panel" class="tryon-panel" aria-label="Anywear 实时试穿" hidden>
+    <header id="tryon-handle" class="tryon-head">
+      <span>Try-On + Anywear</span>
+      <span class="tryon-head-actions">
+        <button type="button" id="tryon-min" aria-label="收起试穿面板">–</button>
+        <button type="button" id="tryon-close" aria-label="关闭试穿并停止摄像头">×</button>
+      </span>
+    </header>
+    <div class="tryon-screen">
+      <video id="tryon-video" playsinline autoplay muted></video>
+      <span id="tryon-timer" class="tryon-timer mono" hidden>0:00</span>
+      <span id="tryon-mode" class="tryon-mode mono" hidden></span>
+      <div id="tryon-idle" class="tryon-idle">
+        <p class="tryon-idle-title">打开摄像头，<br>把这件穿到身上。</p>
+        <p class="tryon-idle-note">画面只在你的浏览器和试穿服务之间实时传输，本站不保存。</p>
+        <button type="button" id="tryon-start" class="primary-button compact">打开摄像头</button>
+      </div>
+      <span class="tryon-watermark" aria-hidden="true">Anywear</span>
+    </div>
+    <div class="tryon-garment">
+      <button type="button" id="tryon-prev" aria-label="上一件">‹</button>
+      <img id="tryon-thumb" alt="">
+      <div class="tryon-garment-text"><strong id="tryon-name"></strong><span id="tryon-status" class="mono" role="status"></span></div>
+      <button type="button" id="tryon-next" aria-label="下一件">›</button>
+    </div>
+    <details id="tryon-help" class="tryon-help" hidden>
+      <summary>实时换装还没开通 · 怎么开？</summary>
+      <ol>
+        <li>在 <a href="https://platform.decart.ai" target="_blank" rel="noopener noreferrer">platform.decart.ai</a> 申请 API Key，用 <code>DECART_API_KEY=… node server.mjs</code> 启动本站，面板会自动切到实时换装。</li>
+        <li>或在电脑版 Chrome 安装 <a href="https://chromewebstore.google.com/detail/anywear-live-virtual-try/hijnklblgecbdlhjiofhlhjpndpifejh" target="_blank" rel="noopener noreferrer">Anywear 插件</a>，直接在本页的衣服图上试穿（原视频的做法）。</li>
+      </ol>
+    </details>
+  </section>
+
+  <div id="toast" class="toast" role="status" aria-live="polite"></div>
+  <noscript><p class="noscript">请启用 JavaScript 以使用选衣空间。</p></noscript>
+</body>
+</html>
